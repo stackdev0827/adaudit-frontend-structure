@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Testing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .video-section {
+            margin-bottom: 40px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        h1, h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Back to Main Page</a>
+    <h1>Video Testing Page</h1>
+
+    <div class="video-section">
+        <h2>Vimeo Video</h2>
+        <div class="video-container">
+            <iframe src="https://player.vimeo.com/video/1044219646" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <h2>Wistia Video</h2>
+        <div class="video-container">
+            <iframe src="https://fast.wistia.net/embed/iframe/3489blvymq?seo=true&videoFoam=false" 
+                    class="wistia_embed" name="wistia_embed"
+                    allow="autoplay; fullscreen" 
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <h2>Wistia Video (Aurora Player)</h2>
+        <div class="video-container" style="height:auto;padding-bottom:0;">
+            <!-- Aurora Player Web Component for the same Wistia video -->
+            <wistia-player
+                id="aurora-wistia-player"
+                media-id="3489blvymq"
+                style="width:100%;max-width:640px;height:360px;display:block;"
+                player-color="2949E5"
+                big-play-button
+                fullscreen-control
+            ></wistia-player>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <h2>Vidalytics Video</h2>
+        <div id="vidalytics_embed_PGFqHnFZDMssUvzM" class="video-container">
+            <!-- Vidalytics video will be loaded here by the script -->
+        </div>
+    </div>
+
+    <!-- Vidalytics Embed Script -->
+    <script type="text/javascript">
+        (function (v, i, d, a, l, y, t, c, s) {
+            y = '_' + d.toLowerCase(); c = d + 'L'; if (!v[d]) { v[d] = {}; } if (!v[c]) { v[c] = {}; } if (!v[y]) { v[y] = {}; } var vl = 'Loader', vli = v[y][vl], vsl = v[c][vl + 'Script'], vlf = v[c][vl + 'Loaded'], ve = 'Embed';
+            if (!vsl) {
+                vsl = function (u, cb) {
+                    if (t) { cb(); return; } s = i.createElement("script"); s.type = "text/javascript"; s.async = 1; s.src = u;
+                    if (s.readyState) { s.onreadystatechange = function () { if (s.readyState === "loaded" || s.readyState == "complete") { s.onreadystatechange = null; vlf = 1; cb(); } }; } else { s.onload = function () { vlf = 1; cb(); }; }
+                    i.getElementsByTagName("head")[0].appendChild(s);
+                };
+            }
+            vsl(l + 'loader.min.js', function () { if (!vli) { var vlc = v[c][vl]; vli = new vlc(); } vli.loadScript(l + 'player.min.js', function () { var vec = v[d][ve]; t = new vec(); t.run(a); }); });
+        })(window, document, 'Vidalytics', 'vidalytics_embed_PGFqHnFZDMssUvzM', 'https://fast.vidalytics.com/embeds/tXW_53q0/PGFqHnFZDMssUvzM/');
+    </script>
+
+
+    <!-- Wistia VULCAN Player[Legacy] -->
+    <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
+
+    <script>
+        // window._wq = window._wq || [];
+        // _wq.push({ id: "_all", onReady: function(video) {
+        //   console.log("I got a handle to the video!", video);
+        // }});
+    </script>
+
+    <!-- Tracking Script -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="http://localhost:5000/api/v1/tracking.js"></script>
+
+    <!-- Aurora Player Scripts (only once per page) -->
+    <!-- <script src="https://fast.wistia.com/player.js" async></script>
+    <script src="https://fast.wistia.com/embed/3489blvymq.js" async type="module"></script> -->
+    <style>
+      /* Optional: Aurora player loading placeholder */
+      wistia-player[media-id='3489blvymq']:not(:defined) {
+        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/3489blvymq/swatch');
+        display: block;
+        filter: blur(5px);
+        padding-top: 56.25%;
+      }
+    </style>
+</body>
+</html> 

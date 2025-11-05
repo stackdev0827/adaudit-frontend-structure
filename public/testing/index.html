@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, textarea {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .nav-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .nav-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Testing Page</h1>
+
+    <div class="section">
+        <h2>Button Testing Section</h2>
+        <button onclick="alert('Button clicked!')">Click Me</button>
+    </div>
+
+    <div class="section">
+        <h2>Form Testing Section</h2>
+        <form id="testForm" onsubmit="event.preventDefault(); alert('Form submitted!');">
+            <input type="text" placeholder="Name" name="name" required>
+            <input type="email" placeholder="Email" name="email" required>
+            <textarea placeholder="Message" rows="4" name="message" required></textarea>
+            <button type="submit">Submit Form</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <h2>Navigation Testing</h2>
+        <a href="videos.html" class="nav-button">Go to Video Page</a>
+    </div>
+
+    <!-- Tracking Script -->
+    <script src="http://localhost:5000/api/v1/tracking.js"></script>
+    <script>
+        window.onload = function() {
+            console.log("Page loaded");
+            window.adaudit.variation('hello world');
+        }
+    </script>
+</body>
+</html>
